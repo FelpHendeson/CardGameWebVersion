@@ -1,0 +1,16 @@
+node_modules
+.pnpm-store
+dist
+.next
+out
+coverage
+playwright-report
+test-results
+*.tsbuildinfo
+.turbo
+.env
+.env.local
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
