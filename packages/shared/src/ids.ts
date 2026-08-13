@@ -1,0 +1,9 @@
+export type CardId = string;
+export type CardInstanceId = string;
+export type PlayerId = string;
+export type GameId = string;
+export type EventId = string;
+export type CommandId = string;
+export type StatusInstanceId = string;
+export type ModifierId = string;
+export type DecisionId = string;
