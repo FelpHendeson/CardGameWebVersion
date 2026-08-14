@@ -1,0 +1,14 @@
+---
+globs: "**/*.md,**/*.mdx"
+alwaysApply: false
+---
+# Governança documental
+
+Documentos com nomes `01_DOCUMENTO_DO_JOGO.md` e `02_CATALOGO_DE_CARTAS.md` são canônicos quando presentes.
+
+- Não edite documentos canônicos para refletir uma implementação divergente; corrija a implementação ou proponha a decisão.
+- Mudança canônica exige solicitação/aprovação explícita do responsável pelo projeto.
+- Documentação técnica deve ser atualizada quando uma decisão técnica aprovada tornar o texto incorreto.
+- Preserve marcadores como `PROVISÓRIO` até validação explícita.
+- Quando houver uma lacuna, registre a lacuna de forma clara; não a converta em regra definitiva.
+- Ao atualizar documentação, identifique quais arquivos de nível inferior ficaram impactados pela mudança superior.

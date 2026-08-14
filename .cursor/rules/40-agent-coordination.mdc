@@ -1,0 +1,53 @@
+---
+description: "Coordenação de tarefas complexas, paralelismo, subagentes, worktrees, handoffs e revisão independente no projeto Jogo de Cartas."
+alwaysApply: false
+---
+# Coordenação entre agentes
+
+Use este protocolo quando a tarefa tocar múltiplos módulos, tiver risco de conflito, exigir pesquisa ampla ou puder ser paralelizada.
+
+## O agente principal é o coordenador
+
+O contexto principal mantém:
+
+- objetivo;
+- escopo e não escopo;
+- documentos canônicos relevantes;
+- critérios de aceite;
+- dependências;
+- ownership de arquivos/pastas;
+- decisões pendentes;
+- integração final.
+
+Não delegue a responsabilidade de integrar tudo a vários agentes ao mesmo tempo.
+
+## Paralelismo seguro
+
+- Subagentes de pesquisa, arquitetura, revisão e verificação devem preferencialmente ser `readonly`.
+- Agentes que escrevem em paralelo devem usar worktrees/checkouts isolados.
+- Não atribua o mesmo arquivo ou domínio mutável a dois escritores simultâneos.
+- Paralelize apenas trabalhos independentes; dependências sequenciais continuam sequenciais.
+- Um agente não deve "corrigir" o trabalho de outro silenciosamente durante integração: reporte conflito e escolha uma fonte de verdade.
+
+## Handoff obrigatório
+
+Todo trabalho delegado relevante deve retornar:
+
+- objetivo atendido;
+- arquivos analisados/alterados;
+- decisões tomadas;
+- testes/comandos executados e resultado;
+- suposições;
+- riscos/pendências;
+- divergências com documentação;
+- próximo passo recomendado.
+
+## Verificação independente
+
+Para mudança não trivial:
+
+1. implementador conclui;
+2. outro contexto/agente revisa sem partir da justificativa do implementador como verdade;
+3. testes são executados;
+4. `canon-guardian` verifica deriva de regra quando aplicável;
+5. coordenador integra somente após o gate.

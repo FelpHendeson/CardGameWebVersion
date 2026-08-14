@@ -1,0 +1,16 @@
+---
+globs: "apps/server/**/*.ts,apps/server/**/*.tsx,packages/shared/**/*.ts,packages/shared/**/*.tsx"
+alwaysApply: false
+---
+# Servidor e protocolo multiplayer
+
+Quando houver multiplayer, o servidor é autoritativo.
+
+- Cliente envia intenção, nunca resultado final.
+- Valide comandos usando o mesmo `game-engine` compartilhado.
+- Use `commandId` para idempotência e `stateVersion`/versão esperada quando o protocolo vigente exigir.
+- Filtre snapshots por jogador para preservar mão, Deck, Armadilhas e informação oculta.
+- Não aceite payloads equivalentes a `dealDamage(9999)`, `drawCard(X)` ou alteração direta de PV/estado.
+- Reconexão deve reconstruir estado por snapshot/versão, não por confiança no cliente.
+- Seed e aleatoriedade pertencem à autoridade do servidor.
+- Não antecipe multiplayer antes dos gates documentados se a tarefa atual é o protótipo local.

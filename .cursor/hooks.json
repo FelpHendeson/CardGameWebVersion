@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "node .cursor/hooks/guard-dangerous-shell.mjs",
+        "matcher": "git|rm |rmdir|del |Remove-Item"
+      }
+    ]
+  }
+}

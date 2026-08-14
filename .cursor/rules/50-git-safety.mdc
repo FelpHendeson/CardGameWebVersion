@@ -1,0 +1,12 @@
+---
+description: "Segurança de Git, alterações destrutivas, commits e integração de trabalhos de agentes."
+alwaysApply: false
+---
+# Segurança de Git
+
+- Não execute `git reset --hard`, `git clean -fd`, descarte amplo de alterações, exclusão de branch ou force push sem pedido/consentimento explícito.
+- Não sobrescreva alterações do usuário para simplificar conflitos.
+- Antes de integrar worktrees/agentes, inspecione diff e estado do repositório.
+- Commits devem ser pequenos e coerentes com uma unidade de trabalho.
+- Não misture refatoração oportunista extensa com correção de bug/regra sem necessidade.
+- Se encontrar alterações não relacionadas no working tree, preserve-as e trabalhe ao redor delas.

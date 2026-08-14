@@ -1,0 +1,16 @@
+---
+globs: "apps/web/**/*.ts,apps/web/**/*.tsx"
+alwaysApply: false
+---
+# Limites da aplicação Web
+
+A Web renderiza estado e captura intenção. Ela não é autoridade de regras.
+
+- Separe estado de jogo de estado de UI.
+- Não calcule dano final, destruição, compra, legalidade de alvo ou vitória diretamente no componente.
+- Para ações de jogo, produza comandos aceitos pelo motor/servidor.
+- Preview de jogada deve usar função do motor/contrato compartilhado quando existir.
+- Não duplique constantes canônicas como PV inicial, 3 Ações, tamanho de Deck ou número de slots dentro de componentes.
+- Feedback visual deve representar eventos/estado confirmados.
+- Informação oculta do adversário nunca pode ser inferida a partir de dados que o cliente não deveria possuir.
+- Fluxos devem respeitar a Especificação Funcional e os wireframes vigentes sem transformar wireframe conceitual em restrição visual absoluta.

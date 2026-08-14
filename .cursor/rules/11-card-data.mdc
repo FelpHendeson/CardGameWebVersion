@@ -1,0 +1,16 @@
+---
+globs: "packages/card-data/**,**/cards/**/*.json,**/cards/**/*.ts"
+alwaysApply: false
+---
+# Dados de cartas
+
+A definição executável de uma carta deve corresponder ao `02_CATALOGO_DE_CARTAS.md` vigente.
+
+- Não invente texto, números, tipos, raridade, Nível, ataques, efeitos, lore ou requisito ausente.
+- Preserve IDs canônicos como `BF-001` e `MU-001`.
+- Efeitos simples devem ser expressos pelo schema declarativo quando possível.
+- Handler especializado só quando o modelo declarativo não representar a regra de modo claro.
+- Handler especializado exige teste unitário específico.
+- Toda carta deve possuir/usar versão de balanceamento quando o schema vigente exigir.
+- Mudança de balanceamento deve ser distinguida de correção de implementação.
+- Se catálogo e código divergirem, o catálogo prevalece até decisão aprovada.

@@ -1,0 +1,45 @@
+---
+alwaysApply: true
+---
+# Governança do projeto e preservação do cânone
+
+Antes de implementar qualquer mudança relevante:
+
+1. Localize `00_README.md`, `01_DOCUMENTO_DO_JOGO.md` e `02_CATALOGO_DE_CARTAS.md` no repositório.
+2. Para mudanças técnicas, localize também a especificação técnica correspondente.
+3. Trate a documentação canônica como fonte de verdade, não como sugestão.
+
+## Ordem de autoridade
+
+Quando existirem os documentos com estes nomes, use a seguinte ordem:
+
+1. `01_DOCUMENTO_DO_JOGO.md` para regras, conceitos e decisões do jogo.
+2. `02_CATALOGO_DE_CARTAS.md` para cartas, estatísticas, efeitos, lore e identidade já aprovados.
+3. `03_ESPECIFICACAO_FUNCIONAL_WEB.md` para comportamento esperado do MVP Web.
+4. `04_ESPECIFICACAO_MOTOR_DUELO.md` para contratos executáveis do motor.
+5. Demais documentos técnicos para detalhes subordinados.
+
+Se `00_README.md` declarar hierarquia mais recente, siga-o.
+
+## Regras de mudança
+
+- Nunca altere uma regra canônica apenas para facilitar a implementação.
+- Nunca altere uma carta canônica apenas para fazer um teste passar.
+- Nunca preencha uma lacuna de regra com uma decisão inventada e definitiva.
+- Se uma decisão necessária não estiver documentada, registre `DECISÃO NECESSÁRIA`, explique impacto e implemente apenas a parte que não dependa dela.
+- Conteúdo marcado `PROVISÓRIO` pode ser parametrizado/testado, mas não deve ser tratado como decisão definitiva.
+- Não crie cartas novas sem solicitação explícita.
+- Não implemente comportamento automático para conceitos ainda não fechados, como palavras-chave reservadas sem regra canônica final.
+
+## Classifique toda mudança
+
+Antes de editar, determine se é:
+
+- correção de bug;
+- implementação de comportamento já especificado;
+- refatoração sem mudança de comportamento;
+- alteração de regra/design;
+- alteração de balanceamento;
+- alteração de arquitetura.
+
+Alterações de regra, design, balanceamento ou arquitetura devem ser explicitadas no plano/handoff. Não as esconda dentro de uma correção técnica.

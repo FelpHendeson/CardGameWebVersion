@@ -1,0 +1,32 @@
+---
+globs: "packages/game-engine/**/*.ts,packages/game-engine/**/*.tsx"
+alwaysApply: false
+---
+# Limites do game-engine
+
+O `game-engine` deve permanecer independente de React, DOM, Fastify, Socket.IO, banco de dados e APIs específicas do navegador.
+
+Modelo obrigatório:
+
+`GameState + Command -> Validation -> Events -> State transition -> New GameState`
+
+Princípios:
+
+- A UI nunca altera diretamente o estado da partida.
+- Comando inválido retorna erro estruturado e não altera estado.
+- Aleatoriedade deve ser controlável por seed.
+- O motor deve permitir replay por estado/seed + sequência de comandos.
+- `CardDefinition` é imutável durante o Duelo; mudanças temporárias pertencem à instância/modificadores.
+- Consumo de Ações é centralizado.
+- Resultado de dano, destruição, compra, alvo e vitória é calculado pelo motor.
+- Regras configuráveis ficam em configuração central, não espalhadas por handlers.
+- Efeitos simples devem ser declarativos; handler especializado é exceção, precisa de chave estável e testes próprios.
+- Preserve eventos suficientes para depuração e observabilidade.
+
+Ao corrigir bug do motor, prefira nesta ordem:
+
+1. reproduzir;
+2. escrever teste que falha;
+3. corrigir na camada mais baixa responsável;
+4. verificar replay/invariantes;
+5. executar testes relacionados.

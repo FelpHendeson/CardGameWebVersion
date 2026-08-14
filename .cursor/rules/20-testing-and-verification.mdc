@@ -1,0 +1,23 @@
+---
+globs: "**/*.test.ts,**/*.spec.ts,**/*.test.tsx,**/*.spec.tsx,tests/**/*.ts"
+alwaysApply: false
+---
+# Testes e verificação
+
+Separe sempre:
+
+1. correção das regras;
+2. robustez/invariantes;
+3. balanceamento/design.
+
+Regras:
+
+- Não mude regra/carta para fazer teste passar sem autorização de design.
+- Testes do motor devem ser determinísticos.
+- Bugs de duelo devem capturar seed, comando(s) e estado relevante quando possível.
+- Cada carta implementada precisa de legalidade, efeito principal, interação relevante e edge case quando houver habilidade única.
+- Lendárias e handlers especializados precisam de cobertura adicional.
+- Preserve invariantes: Ações não negativas, máximo de zonas, uma instância em uma localização lógica, partida finalizada não aceita comando, contagem de instâncias preservada salvo regra explícita.
+- Execute primeiro testes focados e depois a suíte relevante.
+- E2E valida integração/UX; não substitui unitários do motor.
+- Simulação Bot vs Bot é sinal de robustez/balanceamento, não prova matemática de equilíbrio.
