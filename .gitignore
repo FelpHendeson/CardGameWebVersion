@@ -14,3 +14,7 @@ test-results
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+debug.log
+
+# Artes originais das cartas: fonte local. A aplicação usa apps/web/public/cards (Spec 13 §4).
+imgCards/
