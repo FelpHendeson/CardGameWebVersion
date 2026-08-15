@@ -3,6 +3,8 @@
 import { getCardDefinition } from "@duelo/game-data";
 import { computeMaxHp, unitViewFlags } from "@duelo/game-engine";
 import type { GameState, LegalAction, PlayerState, TargetOption, UnitInstance } from "@duelo/shared";
+import { CardView } from "./CardView";
+import { shouldRevealSupportArtwork } from "../lib/card-artwork";
 
 type Selection =
   | { kind: "none" }
@@ -170,6 +172,8 @@ function PlayerPanel({
   onSelectTarget: (target: TargetOption) => void;
 }) {
   const duelistTarget = targets.find((target) => target.kind === "DUELIST" && target.playerId === duelist.id);
+  const fieldCard = duelist.fieldSlot ? getCardDefinition(duelist.fieldSlot.cardId) : null;
+
   return (
     <section className={`rounded-2xl border border-white/10 p-4 ${opponent ? "bg-violet-950/30" : "bg-orange-950/20"}`} data-testid={opponent ? "opponent-panel" : "active-panel"}>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -212,29 +216,29 @@ function PlayerPanel({
         />
         <div>
           <p className="mb-1 text-xs uppercase text-stone-400">Campo</p>
-          <div className="rounded-xl border border-white/10 bg-black/20 p-3 text-sm">
-            {duelist.fieldSlot ? getCardDefinition(duelist.fieldSlot.cardId).name : "—"}
-          </div>
+          {fieldCard ? (
+            <CardView card={fieldCard} variant="field" />
+          ) : (
+            <div className="rounded-xl border border-white/10 bg-black/20 p-3 text-sm text-stone-500">—</div>
+          )}
         </div>
         {!hideHand ? (
           <div>
             <p className="mb-1 text-xs uppercase text-stone-400">Mão</p>
-            <div className="flex flex-wrap gap-2" data-testid="active-hand">
+            <div className="flex gap-2 overflow-x-auto pb-1" data-testid="active-hand">
               {duelist.hand.map((card) => {
                 const definition = getCardDefinition(card.cardId);
                 const selected = selectedId === card.instanceId;
                 return (
                   <button
                     key={card.instanceId}
-                    className={`min-w-[8.5rem] rounded-xl border px-3 py-2 text-left text-sm ${selected ? "border-orange-400 bg-orange-950" : "border-white/10 bg-black/30"}`}
+                    className={`shrink-0 rounded-xl text-left transition ${selected ? "opacity-100" : "opacity-95 hover:opacity-100"}`}
                     onClick={() => onSelectCard(card.instanceId)}
                     data-testid="hand-card"
                     data-card-id={card.cardId}
                     data-category={definition.category}
                   >
-                    <span className="block text-[10px] uppercase text-stone-400">{definition.category}</span>
-                    {definition.name}
-                    {definition.level ? <span className="mt-1 block text-[10px]">Nv. {definition.level}</span> : null}
+                    <CardView card={definition} variant="hand" selected={selected} />
                   </button>
                 );
               })}
@@ -281,7 +285,7 @@ function SlotRow({
           return (
             <button
               key={`${kind}-${index}`}
-              className={`min-h-[7rem] rounded-xl border p-2 text-left text-xs ${
+              className={`min-h-[7.5rem] rounded-xl border p-2 text-left text-xs ${
                 target ? (target.valid ? "border-emerald-400 bg-emerald-950/40" : "border-red-500 bg-red-950/30") : selected ? "border-orange-400 bg-orange-950/40" : "border-white/10 bg-black/20"
               }`}
               onClick={() => {
@@ -295,12 +299,17 @@ function SlotRow({
               }}
               data-testid={`${kind.toLowerCase()}-slot-${playerId}-${index}`}
             >
+              {target ? (
+                <span className={`mb-1 block text-[10px] font-semibold uppercase ${target.valid ? "text-emerald-300" : "text-red-300"}`}>
+                  {target.valid ? "Alvo válido" : "Alvo inválido"}
+                </span>
+              ) : null}
               {!slot ? (
                 <span className="text-stone-500">Vazio</span>
               ) : "currentHp" in slot ? (
                 <UnitCard unit={slot} state={state} />
               ) : (
-                <span>{slot.revealed === false ? "Armadilha preparada" : getCardDefinition(slot.cardId).name}</span>
+                <SupportCard slot={slot} />
               )}
             </button>
           );
@@ -310,28 +319,44 @@ function SlotRow({
   );
 }
 
+function unitStatusChips(flags: ReturnType<typeof unitViewFlags>, hasEquipment: boolean): string[] {
+  const chips: string[] = [];
+  if (flags.summonSickness) chips.push("Invocação");
+  if (flags.hasAttacked) chips.push("Já atacou");
+  if (flags.canAttack) chips.push("Apta");
+  if (flags.stunned) chips.push("Atordoada");
+  if (flags.burned) chips.push("Queimada");
+  if (flags.poisoned) chips.push("Veneno");
+  if (flags.protected) chips.push("Proteção");
+  if (hasEquipment) chips.push("Equip.");
+  return chips;
+}
+
 function UnitCard({ unit, state }: { unit: UnitInstance; state: GameState }) {
   const card = getCardDefinition(unit.cardId);
   const flags = unitViewFlags(state, unit);
   const maxHp = computeMaxHp(state, unit);
+  const chips = unitStatusChips(flags, unit.equipmentInstanceIds.length > 0);
   return (
-    <div>
-      <p className="font-semibold">{card.name}</p>
-      <p data-testid={`unit-hp-${unit.instanceId}`}>
-        {unit.currentHp}/{maxHp} PV
-      </p>
-      <div className="mt-1 flex flex-wrap gap-1 text-[10px] uppercase">
-        {flags.summonSickness ? <span className="rounded bg-sky-900 px-1">Invocação</span> : null}
-        {flags.hasAttacked ? <span className="rounded bg-stone-700 px-1">Já atacou</span> : null}
-        {flags.canAttack ? <span className="rounded bg-emerald-800 px-1">Apta</span> : null}
-        {flags.stunned ? <span className="rounded bg-yellow-800 px-1">Atordoada</span> : null}
-        {flags.burned ? <span className="rounded bg-orange-800 px-1">Queimada</span> : null}
-        {flags.poisoned ? <span className="rounded bg-lime-900 px-1">Veneno</span> : null}
-        {flags.protected ? <span className="rounded bg-blue-900 px-1">Proteção</span> : null}
-        {unit.equipmentInstanceIds.length > 0 ? <span className="rounded bg-amber-900 px-1">Equip.</span> : null}
-      </div>
-    </div>
+    <CardView
+      card={card}
+      variant="board"
+      currentHp={unit.currentHp}
+      maxHp={maxHp}
+      statusChips={chips}
+      hpTestId={`unit-hp-${unit.instanceId}`}
+    />
   );
+}
+
+function SupportCard({ slot }: { slot: { instanceId: string; cardId: string; revealed?: boolean } }) {
+  const revealed = shouldRevealSupportArtwork(slot.revealed);
+  if (!revealed) {
+    return <CardView card={getCardDefinition(slot.cardId)} variant="support" hidden />;
+  }
+  const card = getCardDefinition(slot.cardId);
+  const chips = card.category === "EQUIPMENT" || card.category === "MAGIC_EQUIPMENT" ? ["Equip."] : [];
+  return <CardView card={card} variant="support" statusChips={chips} />;
 }
 
 function CardDetails({
@@ -352,12 +377,16 @@ function CardDetails({
     return null;
   }
   const card = getCardDefinition(cardId);
+  const boardUnit = fromBoard && "currentHp" in fromBoard ? fromBoard : undefined;
+  const maxHp = boardUnit ? computeMaxHp(state, boardUnit) : card.maxHp;
   return (
     <div className="mt-4 text-sm" data-testid="card-details">
-      <p className="font-semibold">{card.name}</p>
-      <p className="text-xs text-stone-400">{card.id} · {card.rarity}</p>
-      {card.level ? <p>Nível {card.level} · PV {fromBoard && "currentHp" in fromBoard ? `${fromBoard.currentHp}/${computeMaxHp(state, fromBoard)}` : card.maxHp}</p> : null}
-      <p className="mt-2 text-stone-300">{card.rulesText}</p>
+      <CardView
+        card={card}
+        variant="detail"
+        currentHp={boardUnit?.currentHp}
+        maxHp={maxHp}
+      />
     </div>
   );
 }

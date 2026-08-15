@@ -46,7 +46,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     visualDescription:
       "Pequeno quadrúpede semelhante a uma mistura entre raposa, lobo e lagarto. Pelo negro com fissuras brilhantes semelhantes a brasas.",
     lore: "Os filhotes aprendem primeiro a seguir o cheiro do sangue. O fogo vem depois.",
-    artwork: { alt: "Filhote de Brasas" },
+    artwork: { assetId: "BF-001", alt: "Filhote de Brasas", alternateAssetIds: ["BF-001-alt"] },
   },
   {
     id: "BF-002",
@@ -88,7 +88,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     visualDescription:
       "Predador felino de seis patas. Membros anteriores excessivamente longos e garras semelhantes a carvão incandescente.",
     lore: "Não confunda sangue com fraqueza. Para eles, sangue significa que a caça finalmente começou. — Explorador Halven",
-    artwork: { alt: "Rasga-Cinzas" },
+    artwork: { assetId: "BF-002", alt: "Rasga-Cinzas" },
   },
   {
     id: "BF-003",
@@ -134,7 +134,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     visualDescription:
       "Canídeo colossal cujo corpo parece composto de placas vulcânicas sobre musculatura em brasa.",
     lore: "Os primeiros Magos Umbrais que atravessaram o portal de Cinerath confundiram essas criaturas com animais domesticáveis.",
-    artwork: { alt: "Cão Magmático de Arkh" },
+    artwork: { assetId: "BF-003", alt: "Cão Magmático de Arkh" },
   },
   {
     id: "BF-004",
@@ -186,7 +186,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
       "Constrição Ardente: 500, aplica Atordoamento. Sopro de Escória: 700, aplica Queimadura. Sangue Vulcânico: se sofrer 500+ de dano de um único efeito, causa 200 à Unidade responsável.",
     visualDescription:
       "Serpente gigantesca revestida por placas minerais semelhantes à obsidiana, com magma visível entre suas escamas.",
-    artwork: { alt: "Serpe da Cratera Rubra" },
+    artwork: { assetId: "BF-004", alt: "Serpe da Cratera Rubra" },
   },
   {
     id: "BF-005",
@@ -233,7 +233,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     visualDescription:
       "Predador terrestre que mistura características de tigre, dragão e grande réptil.",
     lore: "Em Cinerath, “predador alfa” não significa estar no topo da cadeia alimentar. Significa apenas que ainda não apareceu algo maior.",
-    artwork: { alt: "Vharak, Predador da Caldeira" },
+    artwork: { assetId: "BF-005", alt: "Vharak, Predador da Caldeira" },
   },
   {
     id: "BF-006",
@@ -296,7 +296,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     visualDescription:
       "Besta quadrúpede colossal com características de leoa e dragão. Grandes chifres curvos e juba composta literalmente de fogo.",
     lore: "Quando Pyraxa rugiu pela primeira vez após séculos de sono, sete vulcões responderam.",
-    artwork: { alt: "Pyraxa, Mãe da Chama Primeva" },
+    artwork: { assetId: "BF-006", alt: "Pyraxa, Mãe da Chama Primeva" },
   },
   {
     id: "BF-007",
@@ -320,7 +320,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     rulesText:
       "Escolha uma Besta de Fogo. Ela sofre 200 de dano. Seu próximo ataque neste turno causa +300. Caso esteja com metade ou menos dos PV, o bônus passa a ser +500.",
     lore: "Dor é apenas outra forma de combustível.",
-    artwork: { alt: "Sangue em Brasa" },
+    artwork: { assetId: "BF-007", alt: "Sangue em Brasa" },
   },
   {
     id: "BF-008",
@@ -351,7 +351,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     rulesText:
       "A Unidade equipada recebe +200 de dano em ataques corpo a corpo. Ao destruir uma Unidade adversária, recupera 100 PV. Caso seja uma Besta de Fogo, recupera 200 PV.",
     visualDescription: "Presas artificiais negras instaladas sobre os dentes naturais de uma criatura.",
-    artwork: { alt: "Presas de Obsidiana" },
+    artwork: { assetId: "BF-008", alt: "Presas de Obsidiana" },
   },
   {
     id: "BF-009",
@@ -375,7 +375,7 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
     rulesText:
       "Ative quando uma Unidade inimiga declarar um ataque. Cause 400 de dano à Unidade atacante. Caso Caldeira de Cinerath esteja ativa, aplique também Queimadura.",
     visualDescription: "Solo vulcânico explodindo abaixo dos pés de um Mago Umbral.",
-    artwork: { alt: "Erupção Repentina" },
+    artwork: { assetId: "BF-009", alt: "Erupção Repentina" },
   },
   {
     id: "BF-010",
@@ -399,6 +399,6 @@ export const FIRE_BEAST_CARDS: CardDefinition[] = [
       "Bestas de Fogo causam +100 de dano. A primeira vez em cada turno que uma Besta de Fogo sofrer dano, esse dano é reduzido em 100. Queimadura causa +100 de dano adicional.",
     visualDescription:
       "Gigantesco vale vulcânico de Cinerath. Ao fundo existe uma torre negra claramente artificial — a Torre do Eclipse.",
-    artwork: { alt: "Caldeira de Cinerath" },
+    artwork: { assetId: "BF-010", alt: "Caldeira de Cinerath" },
   },
 ];

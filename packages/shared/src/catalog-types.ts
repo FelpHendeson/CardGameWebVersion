@@ -167,8 +167,11 @@ export interface CardDefinition {
   lore?: string;
   visualDescription?: string;
   artwork?: {
+    /** ID do asset estático (ex.: "BF-001"); a UI resolve o path de hosting. */
     assetId?: string;
     alt: string;
+    /** Assets alternativos (ex.: "BF-001-alt"); sem seletor de skin nesta entrega. */
+    alternateAssetIds?: string[];
   };
   tags?: string[];
   level?: number;

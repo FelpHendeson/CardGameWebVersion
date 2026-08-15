@@ -42,6 +42,13 @@ describe("catálogo", () => {
     const ids = ALL_CARDS.map((card) => card.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  it("associa artwork.assetId canônico a cada carta", () => {
+    for (const card of ALL_CARDS) {
+      expect(card.artwork?.assetId).toBe(card.id);
+    }
+    expect(ALL_CARDS.find((card) => card.id === "BF-001")?.artwork?.alternateAssetIds).toEqual(["BF-001-alt"]);
+  });
 });
 
 describe("decks iniciais", () => {

@@ -36,7 +36,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     rulesText:
       "Rajada Sombria: 200. Estudo do Véu: ao ser Invocado, olhe a carta do topo do Deck e mantenha-a ou envie-a ao Descarte.",
     visualDescription: "Jovem estudante com uniforme escuro. Runas violetas iluminam parcialmente seu rosto.",
-    artwork: { alt: "Aprendiz do Véu" },
+    artwork: { assetId: "MU-001", alt: "Aprendiz do Véu" },
   },
   {
     id: "MU-002",
@@ -69,7 +69,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     rulesText:
       "Lança Sombria: 300. Tecelagem: a primeira Armadilha Mágica preparada enquanto esta Unidade estiver em campo, ao ser ativada, cura esta Unidade em 100 PV.",
     lore: "Os iniciados aprendem a criar sombras. Os verdadeiros Umbrais aprendem que elas nunca precisaram ser criadas.",
-    artwork: { alt: "Tecelã de Sombras" },
+    artwork: { assetId: "MU-002", alt: "Tecelã de Sombras" },
   },
   {
     id: "MU-003",
@@ -114,7 +114,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     ],
     rulesText:
       "Corte do Véu: 400. Execução Sombria: 700; se o alvo estiver com metade ou menos dos PV, +200. Caçador de Feridos: quando uma Unidade inimiga perder PV por Magia ou Armadilha Mágica, pode marcá-la; ao atacá-la neste ciclo, +100.",
-    artwork: { alt: "Carrasco do Eclipse" },
+    artwork: { assetId: "MU-003", alt: "Carrasco do Eclipse" },
   },
   {
     id: "MU-004",
@@ -162,7 +162,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     visualDescription:
       "Figura alta em vestes cerimoniais. O local onde deveria existir um rosto é uma superfície negra e perfeitamente lisa.",
     lore: "Alguns dizem que os Arcontes removem o próprio nome durante a iniciação.",
-    artwork: { alt: "Arconte Sem-Rosto" },
+    artwork: { assetId: "MU-004", alt: "Arconte Sem-Rosto" },
   },
   {
     id: "MU-005",
@@ -215,7 +215,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     rulesText:
       "Agulhas Umbrais: 500, aplica Veneno Sombrio. Sombra Devora Sombra: 800; se o alvo possuir qualquer condição negativa, +200. Sete Sombras: na primeira vez em cada turno que sofreria dano de um ataque, reduza esse dano em 200.",
     visualDescription: "Mulher de vestes negras cercada por sete sombras diferentes, apesar de existir apenas uma fonte de luz.",
-    artwork: { alt: "Velka, Bruxa das Sete Sombras" },
+    artwork: { assetId: "MU-005", alt: "Velka, Bruxa das Sete Sombras" },
   },
   {
     id: "MU-006",
@@ -281,7 +281,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     rulesText:
       "Invocação: 3 Ações e ao menos uma Magia ou Armadilha Mágica no Descarte. Eclipse Artificial: 700; todas as outras Unidades recebem 100. Ruptura do Véu: 1000; se o alvo possuir condição negativa, ignora Proteção. Ao entrar, uma Armadilha Mágica do Descarte pode ser preparada sem Ação. Uma vez por turno, ao ativar Armadilha Mágica, recupera 200 PV.",
     lore: "Nereth foi o primeiro homem a atravessar completamente o Véu. Também foi o primeiro a voltar.",
-    artwork: { alt: "Nereth, Arquimago do Véu Negro" },
+    artwork: { assetId: "MU-006", alt: "Nereth, Arquimago do Véu Negro" },
   },
   {
     id: "MU-007",
@@ -306,7 +306,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
       "Escolha uma Unidade. Ela sofre 300 de dano. Caso já possua uma condição negativa, sofre 500 em vez disso.",
     visualDescription:
       "Uma mão espectral atravessa o corpo de uma Besta de Fogo sem produzir qualquer ferimento físico aparente.",
-    artwork: { alt: "Toque da Ausência" },
+    artwork: { assetId: "MU-007", alt: "Toque da Ausência" },
   },
   {
     id: "MU-008",
@@ -339,7 +339,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
     rulesText:
       "Só pode ser equipado em Magos. Ataques da Unidade equipada causam +100. Uma vez por turno, quando você ativar uma Magia, a Unidade equipada recupera 100 PV.",
     lore: "O bastão foi encontrado partido ao lado do primeiro portal.",
-    artwork: { alt: "Bastão do Véu Partido" },
+    artwork: { assetId: "MU-008", alt: "Bastão do Véu Partido" },
   },
   {
     id: "MU-009",
@@ -364,7 +364,7 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
       "Ative quando uma Unidade adversária for Invocada. Ela recebe Atordoamento. Caso seja uma Besta, também sofre 200 de dano.",
     visualDescription:
       "Uma grande Besta de Fogo emergindo de um portal e sendo imediatamente aprisionada por correntes feitas de sombra.",
-    artwork: { alt: "Prisão Sem Luz" },
+    artwork: { assetId: "MU-009", alt: "Prisão Sem Luz" },
   },
   {
     id: "MU-010",
@@ -388,6 +388,6 @@ export const UMBRAL_MAGE_CARDS: CardDefinition[] = [
       "Magos Umbrais recebem +100 PV máximo. A primeira Armadilha Mágica ativada em cada turno causa +100 de dano caso possua dano. Uma vez por turno, quando uma Unidade inimiga receber uma condição negativa, cure 100 PV de um Mago Umbral.",
     visualDescription:
       "A torre observada na arte de Caldeira de Cinerath, vista de perto. Ao longe, a silhueta colossal de Pyraxa.",
-    artwork: { alt: "Torre do Eclipse" },
+    artwork: { assetId: "MU-010", alt: "Torre do Eclipse" },
   },
 ];

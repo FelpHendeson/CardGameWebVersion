@@ -57,6 +57,8 @@ interface BaseCardDefinition {
   artwork?: {
     assetId?: string;
     alt: string;
+    /** Assets alternativos por ID (ex.: BF-001-alt). Paths de hosting ficam na UI. */
+    alternateAssetIds?: string[];
   };
   tags?: string[];
 }
